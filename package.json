@@ -1,0 +1,70 @@
+{
+  "name": "@qfe/create-xht-app",
+  "version": "0.5.12",
+  "description": "用命令生成趣店前端工程仓储的工具",
+  "main": "lib/index.js",
+  "bin": {
+    "create-xht-app": "./bin/create-xht-app.js"
+  },
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "test": "node ./bin/create-xht-app.js",
+    "pub": "yarn build && yarn version --patch && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.qufenqi.com:qfe/create-xht-app.git"
+  },
+  "author": "371",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "branch-check",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "copy-paste": "^1.3.0",
+    "deepmerge": "^4.2.2",
+    "glob": "^7.1.6",
+    "jsonfile": "^6.0.1",
+    "mustache": "^4.0.1",
+    "prompts": "^2.3.2",
+    "shelljs": "^0.8.4"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@qfe/qfe-branch-checker": "^0.0.2",
+    "@types/copy-paste": "^1.1.30",
+    "@types/jsonfile": "^6.0.0",
+    "@types/mustache": "^4.0.1",
+    "@types/node": "^12.18.3",
+    "@types/prompts": "^2.0.8",
+    "@types/shelljs": "^0.8.8",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  },
+  "engines": {
+    "node": "^12.18.3"
+  }
+}
